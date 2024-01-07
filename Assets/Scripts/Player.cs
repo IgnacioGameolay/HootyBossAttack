@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
 
-    [SerializeField] Transform bulletPrefab;
+    [SerializeField] FireBall bulletPrefab;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,7 +28,10 @@ public class Player : MonoBehaviour
     
     void Shoot()
     {
-        Transform bulletClone = Instantiate(bulletPrefab, rb.position, Quaternion.identity);
+        Vector2 shootDirection = spriteRenderer.flipX ? Vector2.left : Vector2.right;
+        float spawnOffset = spriteRenderer.flipX ? -1f : 1f;
+        FireBall bulletClone = Instantiate(bulletPrefab, rb.position + new Vector2(spawnOffset, 0f), Quaternion.identity);
+        bulletClone.Shoot(shootDirection);
     }
     void Animating()
     {
@@ -76,8 +79,11 @@ public class Player : MonoBehaviour
     {
         
         anim.SetBool("isShooting", true);
+        anim.SetTrigger("ThrowBullet");
+
         yield return new WaitForSeconds(0.5f);
         anim.SetBool("isShooting", false);
+
         Shoot();
     }
 
@@ -95,7 +101,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             StartCoroutine(ShootingAnimation());
-            //Shoot();
+            
 
         }
     }

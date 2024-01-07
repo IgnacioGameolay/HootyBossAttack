@@ -39,8 +39,12 @@ public class FireBall : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
         
+    }
+    public void Shoot(Vector2 direction)
+    {
+        transform.right = direction; // Establece la dirección de la bala según el vector de dirección
+        GetComponent<Rigidbody2D>().velocity = direction * speed; // Aplica velocidad en la dirección deseada
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

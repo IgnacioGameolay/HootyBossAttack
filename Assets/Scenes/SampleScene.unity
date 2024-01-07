@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 5
-  bulletPrefab: {fileID: 2185847754994263754, guid: 88f3d30931632d641997c644b53bd788, type: 3}
+  bulletPrefab: {fileID: 4021126144254559396, guid: 88f3d30931632d641997c644b53bd788, type: 3}
 --- !u!50 &1283731605
 Rigidbody2D:
   serializedVersion: 4
