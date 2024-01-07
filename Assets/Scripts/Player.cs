@@ -74,6 +74,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator ShootingAnimation()
     {
+        
         anim.SetBool("isShooting", true);
         yield return new WaitForSeconds(0.5f);
         anim.SetBool("isShooting", false);
