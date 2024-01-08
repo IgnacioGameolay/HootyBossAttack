@@ -83,9 +83,15 @@ public class Player : MonoBehaviour
         isGrounded = false;
     }
 
-    private void ChangeElement()
+    
+    private IEnumerator ChangeElementAnimation()
     {
-        anim.SetTrigger("toGreenElement");
+        anim.SetBool("toGreenElement", true);
+
+        yield return new WaitForSeconds(0.30f);
+
+        anim.SetBool("toGreenElement", false);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -137,7 +143,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1) && isGrounded)
         {
-            ChangeElement();
+            StartCoroutine(ChangeElementAnimation());
         }
 
     }

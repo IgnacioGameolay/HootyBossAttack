@@ -287,6 +287,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   deathCountdown: 5
+  movementSpeed: 2
+  jumpForce: 6
+  jumpCooldown: 2
 --- !u!95 &2382298
 Animator:
   serializedVersion: 5
@@ -418,7 +421,7 @@ GameObject:
   - component: {fileID: 208776547}
   - component: {fileID: 208776546}
   - component: {fileID: 208776545}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1284,8 +1287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a991942e165e4ff4ba246c4c9ff31746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 5
+  speed: 7
+  jumpForce: 8.2
+  health: 20
   bulletPrefab: {fileID: 4021126144254559396, guid: 88f3d30931632d641997c644b53bd788, type: 3}
 --- !u!50 &1283731605
 Rigidbody2D:
@@ -1997,7 +2001,7 @@ GameObject:
   - component: {fileID: 2037868290}
   - component: {fileID: 2037868289}
   - component: {fileID: 2037868288}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall2
   m_TagString: Ground
   m_Icon: {fileID: 0}
