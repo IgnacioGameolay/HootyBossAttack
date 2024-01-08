@@ -6,6 +6,7 @@ public class FireBall : MonoBehaviour
 {
     public float speed = 8f;
     public float lifeTime = 5f;
+    public float damage = 1f;
 
     Animator anim;
     SpriteRenderer spriteRenderer;
@@ -16,8 +17,8 @@ public class FireBall : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         StartCoroutine(ExplotionAnimation());
+        Physics2D.IgnoreLayerCollision(6, 6);
 
-        
     }
 
     private IEnumerator ExplotionAnimation()
@@ -33,7 +34,7 @@ public class FireBall : MonoBehaviour
         speed = 0.5f;
         float scaleIncrease = 3.5f;
         transform.localScale *= scaleIncrease;
-
+        
         Destroy(gameObject, 0.5f);  // Agregado un pequeño tiempo para asegurar que la animación termine antes de destruir el objeto
     }
 
@@ -47,12 +48,16 @@ public class FireBall : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = direction * speed; // Aplica velocidad en la dirección deseada
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Enemy"))  // Asegúrate de ajustar la etiqueta según tus necesidades
+        if (collision.gameObject.CompareTag("Enemy"))  // Asegúrate de ajustar la etiqueta según tus necesidades
         {
-            Debug.LogWarning("Collision with enemy");
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            enemy.TakeDamage(damage);
+
             Explode();
         }
+
+        
     }
 }

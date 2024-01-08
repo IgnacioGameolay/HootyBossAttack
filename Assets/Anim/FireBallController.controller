@@ -109,7 +109,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: luz_noceda_sprite_sheet_by_thesonicfanan_df5i7yl_101
+  m_Name: FireBallController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isExploting
